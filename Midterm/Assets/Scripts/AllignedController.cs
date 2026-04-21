@@ -34,6 +34,11 @@ public class AllignedController : MonoBehaviour
         float upDown = rightStick.y * verticalSpeed * Time.deltaTime;
         sceneRoot.position += Vector3.up * upDown;
 
+        // scaling
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > deadZone)
+            sceneRoot.localScale += new Vector3(1.0f, 1.0f, 1.0f);
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) > deadZone)
+            sceneRoot.localScale -= new Vector3(1.0f, 1.0f, 1.0f);
         
         if (leftStick != Vector2.zero || rightStick != Vector2.zero)
         {
